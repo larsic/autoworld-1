@@ -3,33 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package be.vdab.util;
+package be.vdab.util.mens;
 
 /**
  *
  * @author Administrator
  */
-public class DatumException extends Exception{
+public class MensException extends Exception{
 
-    public DatumException() {
-        
+    public MensException() {
     }
 
-    public DatumException(String message) {
+    public MensException(String message) {
         super(message);
-        
     }
 
-    public DatumException(Throwable cause) {
+    public MensException(Throwable cause) {
         super(cause);
-        
     }
-
-    public DatumException(String message, Throwable cause) {
-        super(message, cause);
-        
-    }
-
     
+    public MensException(String message, Throwable cause) {
+        super(message, cause);
+    }
     
 }
