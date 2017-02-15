@@ -5,6 +5,7 @@
  */
 package be.vdab.util.mens;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -15,12 +16,12 @@ import java.util.Objects;
  *
  * @author Administrator
  */
-public class Mens implements Comparable<Mens>{
+public class Mens implements Comparable<Mens>, Serializable{
    
     private String naam;
     private Rijbewijs [] rijbewijs;
 
-    public Mens(String naam) {
+    public Mens(String naam){
         this.naam = naam;
         rijbewijs = new Rijbewijs [0];
     }
