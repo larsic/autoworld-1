@@ -3,26 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package be.vdab.util.mens;
+package be.vdab.util;
 
 /**
  *
  * @author Administrator
  */
-public class MensException extends IllegalArgumentException{
+public class VolumeException extends IllegalArgumentException{
 
-    public MensException() {
+    public VolumeException() {
     }
 
-    public MensException(String message) {
+    public VolumeException(String message) {
         super(message);
     }
 
-    public MensException(String message, Throwable cause) {
+    public VolumeException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public MensException(Throwable cause) {
+    public VolumeException(Throwable cause) {
         super(cause);
     }
     

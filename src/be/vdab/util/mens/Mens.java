@@ -23,14 +23,14 @@ public class Mens implements Comparable<Mens>, Serializable{
 
     public Mens(String naam){
         this.naam = naam;
-        rijbewijs = new Rijbewijs [0];
+        rijbewijs = new Rijbewijs[0];
     }
     
     
 
     public Mens(String naam, Rijbewijs r) {
         this.naam = naam;
-        rijbewijs = new Rijbewijs [1];
+        rijbewijs = new Rijbewijs[1];
         this.rijbewijs[0] = r;        
         
     }
@@ -38,7 +38,7 @@ public class Mens implements Comparable<Mens>, Serializable{
     public Mens(String naam, Rijbewijs r, Rijbewijs s) {
         int i = 0;
         this.naam = naam;
-        Rijbewijs[] rijbewijstemp = new Rijbewijs [2];
+        Rijbewijs[] rijbewijstemp = new Rijbewijs[2];
         rijbewijstemp[0] = r;
         i++;
         if(!r.equals(s)){ rijbewijstemp[i] = s; i++;}
@@ -159,23 +159,23 @@ public class Mens implements Comparable<Mens>, Serializable{
 
     
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Mens other = (Mens) obj;
-        if (!Objects.equals(this.naam, other.naam)) {
-            return false;
-        }
-        if (!Objects.equals(this.rijbewijs, other.rijbewijs)) {
-            return false;
-        }
-        return true;
-    }
+//    @Override
+//    public boolean equals(Object obj) {
+//        if (obj == null) {
+//            return false;
+//        }
+//        if (getClass() != obj.getClass()) {
+//            return false;
+//        }
+//        final Mens other = (Mens) obj;
+//        if (!Objects.equals(this.naam, other.naam)) {
+//            return false;
+//        }
+//        if (!Objects.equals(this.rijbewijs, other.rijbewijs)) {
+//            return false;
+//        }
+//        return true;
+//    }
 
     @Override
     public int compareTo(Mens o) {
@@ -199,6 +199,21 @@ public class Mens implements Comparable<Mens>, Serializable{
 
         return true;
         
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Mens other = (Mens) obj;
+        if (!Objects.equals(this.naam, other.naam)) {
+            return false;
+        }
+        return true;
     }
     
         

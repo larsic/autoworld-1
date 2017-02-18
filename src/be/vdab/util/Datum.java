@@ -18,7 +18,7 @@ public class Datum implements Comparable<Datum>, Serializable{
     private int maand;
     private int jaar;
 
-    public Datum(int dag, int maand, int jaar) throws DatumException {
+    public Datum(int dag, int maand, int jaar){
         
         if(maand == 2){
             if (jaar%4==0 && jaar%100!=0 || jaar%400==0){

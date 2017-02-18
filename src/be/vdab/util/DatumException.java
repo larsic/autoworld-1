@@ -9,7 +9,7 @@ package be.vdab.util;
  *
  * @author Administrator
  */
-public class DatumException extends Exception{
+public class DatumException extends IllegalArgumentException{
 
     public DatumException() {
         
