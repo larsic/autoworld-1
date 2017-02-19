@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package be.vdab.schoolgerief;
 
 import be.vdab.util.Laadbaar;
@@ -10,19 +5,15 @@ import be.vdab.util.Volume;
 import java.io.Serializable;
 import java.util.Objects;
 
-/**
- *
- * @author Administrator
- */
-public class Boekentas implements Laadbaar, Serializable{
-    
+public class Boekentas implements Laadbaar, Serializable {
+
     private Volume laadvolume;
     private String kleur;
 
     public Boekentas(String kleur, Volume laadvolume) {
         this.laadvolume = laadvolume;
         this.kleur = kleur;
-        if(laadvolume == null || kleur == null){
+        if (laadvolume == null || kleur == null) {
             throw new IllegalArgumentException();
         }
     }
@@ -33,12 +24,10 @@ public class Boekentas implements Laadbaar, Serializable{
 
     public void setKleur(String kleur) {
         this.kleur = kleur;
-        if(kleur == null){
+        if (kleur == null) {
             throw new IllegalArgumentException();
         }
     }
-    
-    
 
     @Override
     public Volume getLaadvolume() {
@@ -48,7 +37,7 @@ public class Boekentas implements Laadbaar, Serializable{
     @Override
     public void setLaadvolume(Volume laadVolume) {
         this.laadvolume = laadVolume;
-        if(laadvolume == null){
+        if (laadvolume == null) {
             throw new IllegalArgumentException();
         }
     }
@@ -83,6 +72,5 @@ public class Boekentas implements Laadbaar, Serializable{
     public String toString() {
         return "boekentas " + kleur + " " + laadvolume;
     }
-    
-    
+
 }

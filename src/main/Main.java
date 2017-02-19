@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package main;
 
 import be.vdab.util.Datum;
@@ -33,10 +28,6 @@ import java.io.ObjectOutputStream;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-/**
- *
- * @author Administrator
- */
 public class Main {
 
     public static void main(String[] args) {
@@ -55,10 +46,10 @@ public class Main {
         lijst.add(d);
         lijst.add(e);
         lijst.add(f);
+        
         System.out.println("SORTEDSET 1\n");
         for (Voertuig v : lijst) {
             System.out.println(v);
-
         }
 
         System.out.println("\nSORTEDSET op aankoopprijs descending\n");

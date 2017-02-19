@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package be.vdab.voertuigen;
 
 import be.vdab.util.Datum;
@@ -35,38 +31,28 @@ public abstract class Voertuig implements Serializable, Comparable<Voertuig> {
         this.merk = merk;
         this.datumEersteIngebruikname = datumEersteIngebruikname;
         this.aankoopprijs = aankoopprijs;
+        
         mensen = new ArrayList<Mens>();
+        
         if (zitplaatsen > 0) {
             this.zitplaatsen = zitplaatsen;
         } else {
             throw new IllegalArgumentException("geen zitplaatsen");
         }
 
-        boolean match = false;
-        for (Rijbewijs a : this.getToegestaneRijbewijzen()) {
-            for (Rijbewijs b : bestuurder.getRijbewijs()) {
-                if (a == b) {
-                    match = true;
-                    break;
-                }
-            }
-        }
-
-        if (match) {
+        if (match(bestuurder)) {
             mensen.add(0, bestuurder);
         } else {
             throw new MensException("fout rijbewijs");
         }
 
         for (Mens m : args) {
-
             if (!isIngezetene(m)) {
                 mensen.add(m);
             }
             if (mensen.size() > this.zitplaatsen) {
                 throw new MensException();
             }
-
         }
     }
 
@@ -136,10 +122,9 @@ public abstract class Voertuig implements Serializable, Comparable<Voertuig> {
     public void setAankoopprijs(int aankoopprijs) {
         this.aankoopprijs = aankoopprijs;
     }
-
-    public void setBestuurder(Mens bestuurder) {
-
-        boolean match = false;
+    
+    public boolean match(Mens bestuurder){
+       boolean match = false;
         for (Rijbewijs a : this.getToegestaneRijbewijzen()) {
             for (Rijbewijs b : bestuurder.getRijbewijs()) {
                 if (a == b) {
@@ -148,9 +133,13 @@ public abstract class Voertuig implements Serializable, Comparable<Voertuig> {
                 }
             }
         }
+        return match;
+    }
+
+    public void setBestuurder(Mens bestuurder) {
 
         if (bestuurder.getRijbewijs().length != 0) {
-            if (match) {
+            if (match(bestuurder)) {
                 // wijzig inizttende nr bestuurder
                 if (isIngezetene(bestuurder)) {
                     mensen.remove(bestuurder);
@@ -188,8 +177,8 @@ public abstract class Voertuig implements Serializable, Comparable<Voertuig> {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        Voertuig other = (Voertuig) obj;
-        if (!Objects.equals(nummerplaat, other.nummerplaat)) {
+        final Voertuig other = (Voertuig) obj;
+        if (!Objects.equals(this.nummerplaat, other.nummerplaat)) {
             return false;
         }
         return true;

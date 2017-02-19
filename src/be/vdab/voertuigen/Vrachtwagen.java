@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package be.vdab.voertuigen;
 
 import be.vdab.util.Datum;
@@ -11,10 +6,6 @@ import be.vdab.util.Volume;
 import be.vdab.util.mens.Mens;
 import be.vdab.util.mens.Rijbewijs;
 
-/**
- *
- * @author Administrator
- */
 public class Vrachtwagen extends Voertuig implements Laadbaar {
 
     private Volume laadvolume;
