@@ -5,63 +5,57 @@
  */
 package be.vdab.util;
 
-import be.vdab.voertuigen.div.Nummerplaat;
 import java.io.Serializable;
 
-/**
- *
- * @author Administrator
- */
-public class Datum implements Comparable<Datum>, Serializable{
-    
+public class Datum implements Comparable<Datum>, Serializable {
+
     private int dag;
     private int maand;
     private int jaar;
 
-    public Datum(int dag, int maand, int jaar){
-        
-        if(maand == 2){
-            if (jaar%4==0 && jaar%100!=0 || jaar%400==0){
-                if ((dag<1 || dag>29)){
-                   throw new DatumException("Day out of bounds; 1 - 29"); 
-                } else {
-                    this.dag = dag;
-                }
-            } else {
-                if ((dag<1 || dag>28)){
-                   throw new DatumException("Day out of bounds, 1 - 28"); 
-                } else {
-                    this.dag = dag;
-                }
-            }
-            this.maand = maand;
-            
-        } else if (maand == 4 || maand == 6 || maand == 9 || maand == 11) {
-            if ((dag<1 || dag>30)){
-                   throw new DatumException("Day out of bounds, 1 - 30"); 
-                } else {
-                    this.dag = dag;
-                }
-            this.maand = maand;
-            
-        } else if (maand == 1 || maand == 3 || maand == 5 || maand == 7 || maand == 8 || maand == 10 || maand == 12) {
-            if ((dag<1 || dag>31)){
-                   throw new DatumException("Day out of bounds, 1 - 31"); 
-                } else {
-                    this.dag = dag;
-                }
-            this.maand = maand;
-            
-        } else {
-            throw new DatumException("Month out of bounds");
-        }
-
-         if (jaar<1583 || jaar>4099){
+    public Datum(int dag, int maand, int jaar) {
+        // check jaar
+        if (jaar < 1583 || jaar > 4099) {
             throw new DatumException("Year out of bounds");
         } else {
             this.jaar = jaar;
+            // check maand
+            if (maand < 1 || maand > 12) {
+                throw new DatumException("Month out of bounds");
+            } else {
+                this.maand = maand;
+                //check dag, in maanden met 30 dagen
+                if (maand == 4 || maand == 6 || maand == 9 || maand == 11) {
+                    if ((dag < 1 || dag > 30)) {
+                        throw new DatumException("Day out of bounds, 1 - 30");
+                    } else {
+                        this.dag = dag;
+                    }
+                    //check dag, in maanden met 31 dagen    
+                } else if (maand == 1 || maand == 3 || maand == 5 || maand == 7 || maand == 8 || maand == 10 || maand == 12) {
+                    if ((dag < 1 || dag > 31)) {
+                        throw new DatumException("Day out of bounds, 1 - 31");
+                    } else {
+                        this.dag = dag;
+                    }
+                    // check dag, in februari met en zonder schrikkeljaar    
+                } else if (maand == 2) {
+                    if (jaar % 4 == 0 && jaar % 100 != 0 || jaar % 400 == 0) {
+                        if ((dag < 1 || dag > 29)) {
+                            throw new DatumException("Day out of bounds; 1 - 29");
+                        } else {
+                            this.dag = dag;
+                        }
+                    } else {
+                        if ((dag < 1 || dag > 28)) {
+                            throw new DatumException("Day out of bounds, 1 - 28");
+                        } else {
+                            this.dag = dag;
+                        }
+                    }
+                }
+            }
         }
-        
     }
 
     public int getDag() {
@@ -80,19 +74,18 @@ public class Datum implements Comparable<Datum>, Serializable{
     public String toString() {
         String d;
         String m;
-        
-        if(dag<10){
-           d = "0"+dag; 
+
+        if (dag < 10) {
+            d = "0" + dag;
         } else {
-            d = ""+dag;
+            d = "" + dag;
         }
-        if(maand<10){
-           m = "0"+maand; 
+        if (maand < 10) {
+            m = "0" + maand;
         } else {
-            m = ""+maand;
+            m = "" + maand;
         }
-       
-        
+
         return d + "/" + m + "/" + jaar;
     }
 
@@ -127,21 +120,14 @@ public class Datum implements Comparable<Datum>, Serializable{
     }
 
     @Override
-    public int compareTo(Datum o){
-        if(this.jaar != o.getJaar()){
-           return this.jaar - o.getJaar();
-        }
-        else if (this.maand != o.getMaand()){
+    public int compareTo(Datum o) {
+        if (this.jaar != o.getJaar()) {
+            return this.jaar - o.getJaar();
+        } else if (this.maand != o.getMaand()) {
             return this.maand - o.getMaand();
         } else {
-            
-            return this.dag - o.getDag(); 
-        } 
-    } 
-    
-    
-    
-    
-    
-    
+            return this.dag - o.getDag();
+        }
+    }
+
 }

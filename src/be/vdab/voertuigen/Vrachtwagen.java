@@ -20,18 +20,16 @@ public class Vrachtwagen extends Voertuig implements Laadbaar {
     private Volume laadvolume;
     private int maximaalToegelatenMassa;
     private int aantalAssen;
-    
+
     public Vrachtwagen(String merk, Datum datumEersteIngebruikname, int aankoopprijs, int zitplaatsen, Volume volume, int maximaalToegelatenMassa, int aantalAssen, Mens bestuurder, Mens... args) {
         super(merk, datumEersteIngebruikname, aankoopprijs, zitplaatsen, bestuurder, args);
         this.laadvolume = volume;
         this.maximaalToegelatenMassa = maximaalToegelatenMassa;
         this.aantalAssen = aantalAssen;
-        if(zitplaatsen>3){
+        if (zitplaatsen > 3) {
             throw new IllegalArgumentException();
         }
     }
-
-
 
     public int getMaximaalToegelatenMassa() {
         return maximaalToegelatenMassa;
@@ -48,10 +46,7 @@ public class Vrachtwagen extends Voertuig implements Laadbaar {
     public void setAantalAssen(int aantalAssen) {
         this.aantalAssen = aantalAssen;
     }
-    
 
-    
-    
     @Override
     Rijbewijs[] getToegestaneRijbewijzen() {
         Rijbewijs[] pw = new Rijbewijs[2];
@@ -61,7 +56,7 @@ public class Vrachtwagen extends Voertuig implements Laadbaar {
     }
 
     @Override
-    int getMAX_ZITPLAATSEN(){
+    int getMAX_ZITPLAATSEN() {
         return 3;
     }
 
@@ -79,5 +74,5 @@ public class Vrachtwagen extends Voertuig implements Laadbaar {
     public String toString() {
         return super.toString() + " assen:" + aantalAssen + ", maximaal toegelaten massa:" + maximaalToegelatenMassa + ", laadvolume:" + laadvolume;
     }
-    
+
 }

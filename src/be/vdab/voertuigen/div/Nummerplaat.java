@@ -1,14 +1,9 @@
 /*
-* @Autor Frank
-* Dit is een oefening.
+ * @Autor Frank
+ * Dit is een oefening.
  */
-
 package be.vdab.voertuigen.div;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -16,20 +11,14 @@ import java.util.Objects;
  *
  * @author frank.roelants
  */
-public class Nummerplaat implements Comparable<Nummerplaat>, Serializable{
-    
-    private String plaat;
-    
-    
-    
-    
+public class Nummerplaat implements Comparable<Nummerplaat>, Serializable {
 
-    Nummerplaat(String plaat){
-        
+    private String plaat;
+
+    Nummerplaat(String plaat) {
+
         this.plaat = plaat;
-        
-        
-        
+
     }
 
     public String getPlaat() {
@@ -65,13 +54,8 @@ public class Nummerplaat implements Comparable<Nummerplaat>, Serializable{
 
     @Override
     public int compareTo(Nummerplaat o) {
-        
+
         return this.plaat.compareTo(o.getPlaat());
     }
-    
-    
-    
-    
-    
-    
+
 }
